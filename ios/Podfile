@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'namazApp' do
+target 'Naiki' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'namazAppTests' do
+  target 'NaikiTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'namazApp' do
   end
 end
 
-target 'namazApp-tvOS' do
-  # Pods for namazApp-tvOS
+target 'Naiki-tvOS' do
+  # Pods for Naiki-tvOS
 
-  target 'namazApp-tvOSTests' do
+  target 'Naiki-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

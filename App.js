@@ -23,17 +23,32 @@ import {
 } from 'react-native';
 
 import AboutScreen from './Screens/AboutScreen';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomePageScreen from './Screens/HomePageScreen';
 import InfoScreen from './Screens/InfoScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import React from 'react';
+import {ThemeProvider} from 'react-native-elements';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStore} from 'redux';
 import reducer from './reducers';
 
 const store = createStore(reducer);
-
+const theme = {
+  Button: {
+    raised: false,
+    titleStyle: {
+      color: 'white',
+      fontFamily: 'Podkova-Medium',
+    },
+  },
+  Text: {
+    style: {
+      fontFamily: 'Podkova-Medium',
+    },
+  },
+};
 const Tab = createBottomTabNavigator();
 const App = () => {
   return (
@@ -48,14 +63,50 @@ const App = () => {
     //   </SafeAreaView>
     // </>
     <Provider store={store}>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomePageScreen} />
-          <Tab.Screen name="Info" component={InfoScreen} />
-          <Tab.Screen name="About" component={AboutScreen} />
-          {/* <Tab.Screen name="About" component={A} /> */}
-        </Tab.Navigator>
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Tab.Navigator
+            // screenOptions={({route}) => ({
+            //   tabBarIcon:,
+            // })}
+            tabBarOptions={{
+              activeTintColor: '#dba329',
+              inactiveTintColor: 'gray',
+            }}>
+            <Tab.Screen
+              name="Home"
+              component={HomePageScreen}
+              options={{
+                tabBarLabel: 'Home',
+                tabBarIcon: ({color, size}) => (
+                  <AntDesign name="home" color={color} size={size} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Info"
+              component={InfoScreen}
+              options={{
+                tabBarLabel: 'Guide',
+                tabBarIcon: ({color, size}) => (
+                  <AntDesign name="book" color={color} size={size} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="About"
+              component={AboutScreen}
+              options={{
+                tabBarLabel: 'About Us',
+                tabBarIcon: ({color, size}) => (
+                  <AntDesign name="infocirlceo" color={color} size={size} />
+                ),
+              }}
+            />
+            {/* <Tab.Screen name="About" component={A} /> */}
+          </Tab.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </Provider>
   );
 };

@@ -1,15 +1,14 @@
 import {
   AppRegistry,
-  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import {Button, Text} from 'react-native-elements';
 import {Col, Grid, Row} from 'react-native-easy-grid';
 import React, {useEffect, useState} from 'react';
 import {
@@ -205,7 +204,7 @@ const TimingTableRow = ({namazName, startService}) => {
       </Col>
       <Col style={styles.timeBoxContainer}>
         <Switch
-          trackOnColor={'#6e20e9'}
+          trackOnColor={'#f3b52e'}
           isOn={isNamazEnabled}
           onChange={async (isOn) => {
             if (isOn) {
@@ -252,18 +251,19 @@ const styles = StyleSheet.create({
     height: hp('5%'),
     // backgroundColor: 'red',
     borderWidth: 1,
-    borderColor: '#6e20e9',
+    borderColor: '#f3b52e',
     borderRadius: wp('5%'),
   },
   timeBoxText: {
     textAlign: 'center',
     marginTop: hp('1%'),
     fontSize: hp('2%'),
-    fontWeight: 'bold',
+    fontFamily: 'Podkova-ExtraBold',
   },
   timeBoxHeading: {
     fontSize: hp('3%'),
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Podkova-ExtraBold',
   },
   toggleContainer: {
     width: wp('5%'),

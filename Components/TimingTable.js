@@ -1,15 +1,14 @@
 import {
   AppRegistry,
-  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import {Button, Text} from 'react-native-elements';
 import {Col, Grid, Row} from 'react-native-easy-grid';
 import React, {useEffect, useState} from 'react';
 import {
@@ -26,29 +25,7 @@ import {showMessage} from 'react-native-flash-message';
 
 const regularJobKey = 'regularJobKey';
 
-const TimingTable = ({checkEnabled}) => {
-  const startService = () => {
-    BackgroundJob.cancelAll()
-      .then(async () => {
-        if (await checkEnabled()) {
-          BackgroundJob.schedule({
-            jobKey: regularJobKey,
-            notificationTitle: 'Notification title',
-            notificationText: 'Notification text',
-            period: 5000,
-          });
-          console.log('service Started');
-        }
-      })
-      .catch(async (err) => {
-        console.log(err);
-        await AsyncStorage.setItem('isFajrEnabled', 'false');
-        await AsyncStorage.setItem('isZuhrEnabled', 'false');
-        await AsyncStorage.setItem('isAsarEnabled', 'false');
-        await AsyncStorage.setItem('isMaghribEnabled', 'false');
-        await AsyncStorage.setItem('isEshaEnabled', 'false');
-      });
-  };
+const TimingTable = ({checkEnabled, startService}) => {
   //   const stopService = () => {
   //     BackgroundJob.cancelAll()
   //       .then(async () => {
@@ -143,7 +120,8 @@ const styles = StyleSheet.create({
     fontSize: hp('3%'),
 
     textAlign: 'center',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Podkova-ExtraBold',
   },
   timeBoxContainer: {
     alignItems: 'center',
