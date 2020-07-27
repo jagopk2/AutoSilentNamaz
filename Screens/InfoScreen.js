@@ -53,6 +53,12 @@ const instruct_images = [
     text:
       'You can turn On/Off individual/all Namaz Service by their Respective Status button',
   },
+  {
+    id: 7,
+    image: null,
+    text:
+      'Close the App because it only works in background and it will take 15 minutes for Service to start to do its magic',
+  },
 ];
 
 const InfoScreen = () => {
@@ -70,7 +76,9 @@ const InfoScreen = () => {
               <View key={item.id.toString()}>
                 <Text style={styles.insStep}>Step {index + 1}</Text>
                 <Text style={styles.insStepDetail}>{item.text}</Text>
-                <Image source={item.image} style={styles.insImage} />
+                {item.image ? (
+                  <Image source={item.image} style={styles.insImage} />
+                ) : null}
               </View>
             )}
             keyExtractor={(item) => item.id.toString()}

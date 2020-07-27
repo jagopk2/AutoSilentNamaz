@@ -102,8 +102,21 @@ const TimingTableRow = ({namazName, startService}) => {
         break;
       case 2:
         if (new Date(date) > namazStart) {
-          await AsyncStorage.setItem(namazName + 'End', date.toString());
-          setNamazEnd(new Date(date));
+          var diff = Math.floor(
+            Math.abs(new Date(date) - namazStart) / 1000 / 60,
+          );
+          console.log(diff);
+          if (diff > 19) {
+            await AsyncStorage.setItem(namazName + 'End', date.toString());
+            setNamazEnd(new Date(date));
+          } else {
+            showMessage({
+              message: 'Error',
+              description:
+                'There Should be 20 minutes difference between start time and end time',
+              type: 'danger',
+            });
+          }
         } else {
           showMessage({
             message: 'Error',
@@ -154,6 +167,7 @@ const TimingTableRow = ({namazName, startService}) => {
   return (
     <Row>
       <DateTimePickerModal
+        date={namazStart ? namazStart : new Date()}
         isVisible={isDatePickerVisible}
         mode="time"
         onConfirm={handleConfirm}

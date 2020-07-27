@@ -24,12 +24,15 @@ import {
 
 import AboutScreen from './Screens/AboutScreen';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import HomePageScreen from './Screens/HomePageScreen';
 import InfoScreen from './Screens/InfoScreen';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {ThemeProvider} from 'react-native-elements';
+import TroubleShootScreen from './Screens/TroubleShootScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStore} from 'redux';
 import reducer from './reducers';
@@ -52,23 +55,10 @@ const theme = {
 const Tab = createBottomTabNavigator();
 const App = () => {
   return (
-    // <>
-    //   <StatusBar barStyle="dark-content" />
-    //   <SafeAreaView>
-    //     <ScrollView
-    //       contentInsetAdjustmentBehavior="automatic"
-    //       style={styles.scrollView}>
-    //       <HomePageScreen />
-    //     </ScrollView>
-    //   </SafeAreaView>
-    // </>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            // screenOptions={({route}) => ({
-            //   tabBarIcon:,
-            // })}
             tabBarOptions={{
               activeTintColor: '#dba329',
               inactiveTintColor: 'gray',
@@ -94,15 +84,30 @@ const App = () => {
               }}
             />
             <Tab.Screen
+              name="TroubleShoot"
+              component={TroubleShootScreen}
+              options={{
+                tabBarLabel: 'Trouble Shoot',
+                tabBarIcon: ({color, size}) => (
+                  <MaterialIcons
+                    name="error-outline"
+                    color={color}
+                    size={size}
+                  />
+                ),
+              }}
+            />
+            <Tab.Screen
               name="About"
               component={AboutScreen}
               options={{
                 tabBarLabel: 'About Us',
                 tabBarIcon: ({color, size}) => (
-                  <AntDesign name="infocirlceo" color={color} size={size} />
+                  <Fontisto name="persons" color={color} size={size} />
                 ),
               }}
             />
+
             {/* <Tab.Screen name="About" component={A} /> */}
           </Tab.Navigator>
         </NavigationContainer>

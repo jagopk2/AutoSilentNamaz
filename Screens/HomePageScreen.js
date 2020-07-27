@@ -63,11 +63,19 @@ BackgroundJob.register({
       const valid = await checkTimeBetween();
       console.log(valid);
       if (valid) {
-        if (!(await is_mute())) volume_off();
+        if (!(await is_mute())) {
+          volume_off();
+          await AsyncStorage.setItem('isVolumeOff', 'true');
+        }
         // await AsyncStorage.setItem('is_muted', true);
       } else if (!valid) {
         // await AsyncStorage.setItem('is_muted', false);
-        volume_on();
+        if ((await AsyncStorage.getItem('isVolumeOff')) == 'true') {
+          volume_on();
+          await AsyncStorage.setItem('isVolumeOff', 'false');
+        } else {
+          console.log('Volume is Already Turned On');
+        }
       }
     } else {
       console.log('Service Stopped Because Nothing is Enabled');
@@ -98,7 +106,7 @@ const startService = () => {
           jobKey: regularJobKey,
           notificationTitle: 'Notification title',
           notificationText: 'Notification text',
-          period: 5000,
+          // period: 5000,
         });
         console.log('service Started');
       }
