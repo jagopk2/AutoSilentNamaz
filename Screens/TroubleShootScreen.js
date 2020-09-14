@@ -46,18 +46,19 @@ const handleTextReady = () => {
 const questionAns = [
   {
     q: 'How to Stop the Service?',
-    a: `To turn off the Service just turn off all the Status buttons`,
+    a: `To turn off the service just turn off all the status buttons`,
   },
   {
-    q: 'Will the Service work Even after the Phone Restart?',
-    a: `Yes,the Service is auto start when Phone Restarts. If for any Reason it Doesn't Starts for your phone Just Re open the App and close App . Service will auto start when you open the App`,
+    q: 'Will the service work even after the phone restarts?',
+    a: `Yes,Service will auto start when phone restarts. If for any reason it Doesn't starts for your phone just re-open the app and close App .Service will auto start when you open the App`,
   },
   {
-    q: 'Why it is Required to set timer 20 minutes before Namaz start or ends?',
-    a: `Because to save battery consumption the Service checks the time after 15-20 minutes`,
+    q:
+      'Why it is Required to set timer 20 minutes before Namaz starts or ends?',
+    a: `Because to save battery consumption the service checks the time after 15-20 minutes`,
   },
   {
-    q: 'Why auto generated timings are not Accurate?',
+    q: 'Why auto generated timings are not accurate?',
     a: `There are many methods to generate namaz timings, This App uses the Muslim world league method and that's the reason timings might be different for you`,
   },
   {
@@ -77,8 +78,8 @@ const InfoScreen = () => {
         <ScrollView style={styles.container}>
           <Text style={styles.insStep}>Important</Text>
           <Text style={styles.insStepDetail}>
-            Set Timings with atleast 20 minutes difference for Example if Namaz
-            time is "5.30" you should set Start time to "5.10" or "5.00" and Ent
+            Set timings with at least 20 minutes difference for example if namaz
+            time is "5.30" you should set start time to "5.10" or "5.00" and end
             time to "5.50" or "6.00" in order for app to work Properly
           </Text>
 

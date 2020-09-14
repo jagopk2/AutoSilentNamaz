@@ -216,7 +216,7 @@ const TimingTableRow = ({namazName, startService}) => {
           </Text>
         </TouchableOpacity>
       </Col>
-      <Col style={styles.timeBoxContainer}>
+      <Col style={{...styles.timeBoxContainer, marginTop: hp('2.5')}}>
         <Switch
           trackOnColor={'#f3b52e'}
           isOn={isNamazEnabled}

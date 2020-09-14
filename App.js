@@ -24,6 +24,7 @@ import {
 
 import AboutScreen from './Screens/AboutScreen';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import FlashMessage from 'react-native-flash-message';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import HomePageScreen from './Screens/HomePageScreen';
 import InfoScreen from './Screens/InfoScreen';
@@ -87,13 +88,9 @@ const App = () => {
               name="TroubleShoot"
               component={TroubleShootScreen}
               options={{
-                tabBarLabel: 'Trouble Shoot',
+                tabBarLabel: 'FAQ',
                 tabBarIcon: ({color, size}) => (
-                  <MaterialIcons
-                    name="error-outline"
-                    color={color}
-                    size={size}
-                  />
+                  <Fontisto name="question" color={color} size={size} />
                 ),
               }}
             />
@@ -111,6 +108,7 @@ const App = () => {
             {/* <Tab.Screen name="About" component={A} /> */}
           </Tab.Navigator>
         </NavigationContainer>
+        <FlashMessage position="top" />
       </ThemeProvider>
     </Provider>
   );

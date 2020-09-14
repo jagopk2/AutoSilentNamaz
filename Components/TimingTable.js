@@ -16,37 +16,11 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-import AsyncStorage from '@react-native-community/async-storage';
-import BackgroundJob from 'react-native-background-job';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import Switch from 'react-native-full-switch';
 import TimingTableRow from './TimingTableRow';
-import {showMessage} from 'react-native-flash-message';
-
-const regularJobKey = 'regularJobKey';
 
 const TimingTable = ({checkEnabled, startService}) => {
-  //   const stopService = () => {
-  //     BackgroundJob.cancelAll()
-  //       .then(async () => {
-  //         await AsyncStorage.setItem('isFajrEnabled', 'false');
-  //         setIsFajrEnabled(false);
-  //         console.log('Succesfully Stopped Services');
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
-
   return (
     <View>
-      {/* <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="time"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      /> */}
-
       <Grid>
         <Row>
           <Col>
